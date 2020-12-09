@@ -287,7 +287,7 @@ end
 
 计算的优先级别如下（越靠前越优先）：
 
-###### <img src="Julia快速上手.assets/计算优先顺序.png" alt="计算优先顺序" style="zoom:80%;" />
+##### <img src="计算优先顺序.png" alt="计算优先顺序" style="zoom:75%;" />
 
 ## 5.判断和循环
 
