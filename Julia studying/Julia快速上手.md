@@ -369,9 +369,100 @@ println("The sum of factorial of ",x1," is ",j)
 
 ## 6.简单文件操作
 
-## Appendix
+## 7.数组和矩阵
 
-### A1.常见函数
+### 7.1 
+
+## 8.函数和模块
+
+### 8.1 函数
+
+#### 8.1.1 内置函数
+
+Julia内置的函数主要有 数学函数（包括三角函数）、随机函数、字符（串）函数这三类
+
+数学函数[参见这里](https://www.w3cschool.cn/julia/i26o1jfa.html)，有需要时可以查询；随机函数很好理解，生成随机数，举例如下：
+
+```julia
+rand(1:10,3,5)		#生成一个 取值范围是1-10的、包含3行5列的随机数组
+randn(1:10,3,5)		#按照正态分布取随机数的值，其他相同
+#它们都是浮点数！
+```
+
+字符函数常用的有两个，用于转换字符和其对应的Unicode编码，如下：
+
+```julia
+Char(80)		#将数字转换为字符，函数首字母大写
+Int('P')		#将字符转换为数字，注意这里需要用单引号
+```
+
+字符串函数比较复杂，具体如下：
+
+```julia
+string = "This is an example."
+SubString(string, start, end)
+# ↑用于在字符串string中截取一部分内容，start是开始部分，end是结束部分
+length(string)			#获取字符串的长度
+firstindex(string)		#获取字符串的首个字符
+lastindex(string)		#获取字符串的最末字符
+occursin(a, string)		#判断字符串a是否在字符串string中，是则返回true
+```
+
+#### 8.1.2 自定义函数
+
+自定义函数必须用关键词function开头，直接举例说明：
+
+```julia
+function Example(x,y)		#定义了一个叫做Example的函数，并且有两个传入这个函数的参数x和y
+    if x > 5
+        return(x+y)			#一旦出现return命令，则输出return括号内部的值，跳出函数，回到主程序
+    else
+        return(nothing)		#这里返回值是空，nothing意味函数没有输出结果
+    end
+end							#函数最后有end结尾
+
+function example2()			#定义一个叫example2的函数，这个函数没有输入值
+    x = 1, y = 2
+    x + y
+    x - y
+end
+# ↑这个函数输出值就是最后的表达式x-y的值
+```
+
+函数只能在同一个文件中进行调用，或者作为单独的.jl文件保存后，在REPL界面使用include("*.jl")命令调用。
+
+### 8.2 模块
+
+模块可以在不同的文件中进行调用，相当于跨文件的函数，并且模块可以包含多个函数。这一部分在2.2有所提及，举例如下：
+
+```julia
+module eg					#定义一个叫eg的模块，这里没有任何括号
+	export func1			#输出func1函数
+	function func1()
+    	println("This is function 1.")
+	end
+	
+	function func2()
+    	println("This is function 2.")
+	end
+end							#模块最后也有end命令！
+```
+
+在以上定义的模块中，用export输出了函数func1，并没有输出函数func2，则func1是公开的，而func2是非公开的，区别体现在二者的调用上。在另一个文件中调用func1和func2，分别需要如下命令：
+
+```julia
+using eg
+func1()
+eg.func2()
+```
+
+此外，第一行的 using 可以用 import 代替，import 允许修改引入模块中的内容。
+
+通常而言，在项目的src文件夹中，只有一个module和多个function，如果源代码需要很多function支撑，则可以将function单独作为.jl文件保存在src文件夹中，再在module中使用 include 命令使得源代码的module囊括该function的功能。调用方式与上面所写的一致。
+
+
+
+## Appendix
 
 
 
