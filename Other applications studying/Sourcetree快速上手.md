@@ -43,6 +43,34 @@ Sourcetree是一款将Git工作流封装于一体的程序，操作简洁好用�
 
 步骤4中，可以看到Sourcetree主界面左上角的“推送”按钮有了变化，说明可以即刻上传更改，使GitHub端的库与本地库同步，点击推送，首次上传时会弹出登录到GitHub的窗口，等待推送完成即可。
 
+
+
+操作流程如下：
+
+1）将远端文件同步至本地。
+
+![image-20210116140829912](C:\Users\Have A Nice Day\AppData\Roaming\Typora\typora-user-images\image-20210116140829912.png)
+
+2）将修改后的文件放入文件夹中。此时修改后的文件会出现在暂存框中。
+
+![image-20210116140912123](C:\Users\Have A Nice Day\AppData\Roaming\Typora\typora-user-images\image-20210116140912123.png)
+
+3）选择需要暂存的文件，点击“暂存所选”或“暂存所有”，之后“已暂存文件中会有显示。
+
+![image-20210116141031296](C:\Users\Have A Nice Day\AppData\Roaming\Typora\typora-user-images\image-20210116141031296.png)
+
+4）这一步开始就可以提交本次修改了。对于本次修改的描述需要在下方的对话框中添加。
+
+![image-20210116141204160](C:\Users\Have A Nice Day\AppData\Roaming\Typora\typora-user-images\image-20210116141204160.png)
+
+5）点击提交后，在左上方“推送”会出现数字角标，点击“推送”即可。
+
+![image-20210116141329069](C:\Users\Have A Nice Day\AppData\Roaming\Typora\typora-user-images\image-20210116141329069.png)
+
+6）或者在第四步中勾选左下角方框，就可以将提交和推送步骤一起完成。
+
+## 4.Q&A
+
 常见的“无法完成推送”的原因：
 
 1. Git的版本过低，解决方式是更新Git至最新版本，[下载地址](https://git-scm.com/downloads)
