@@ -6,7 +6,7 @@
 
 ## 1.有关编程和Python
 
-### 1.1 我们是如何让机器读懂程序的
+### 1.1  我们是如何让机器读懂程序的
 
 ​	电子计算机是靠着“通电”“断电”两个状态表示0和1，而我们平时使用的程序（其实Windows等系统也算一个程序）都是在不断调用、读取、修改0和1状态，从而达到完成某个指令（如编写了一个Word文档）的目的。这个指令是在一个程序中运行的，程序是依靠代码运转，而代码是一层层的封装，最终调用0和1的不同状态。要知道的是，计算机只能读取“0”和“1”，所以我们看起来很简单的计算在0和1的世界里是这样的：
 
@@ -25,7 +25,7 @@
 
 ​	**算法**是编程中非常重要的思想，或者说算法决定了一个程序的步骤，**是指令/命令的有限序列**，它一定是有一个结果的（不会永远执行）。算法需要有这几个属性：**输入**、**输出**、**有限**、**确定**（算法内所有的步骤都是被精确定义的）、**有效**（是可行的，且计算不需要太多的时间）。创建一个算法通常需要三个步骤：输入、处理、输出，可能存在不需要输入阶段的情况，这种情况下，电脑/机器知道自己要做什么事情（比如编写一个程序计算1-10的自然数的和，机器明确知道自己的任务）。
 
-### 1.2 有关Python
+### 1.2  有关Python
 
 介绍放这里了：[百度百科](https://baike.baidu.com/item/Python/407313?fr=aladdin)，[Python官方](https://www.python.org/)
 
@@ -71,7 +71,7 @@
 
 如果用上面的开发环境，可能会劝退大多数人，所以接下来我们需要一个很屌的开发环境，或者说一个集成了写代码、运行调试代码的平台——Visual Studio Code.
 
-#### 1.2.X Visual Studio Code
+#### 1.2.X  Visual Studio Code
 
 [这是官网](https://code.visualstudio.com/)，只不过打开比较慢。
 
@@ -85,7 +85,7 @@
 
 这样可以在资源管理器/文件夹中点击，快速使用VS Code打开这个文件夹。
 
-### 1.3 VS Code中的拓展插件安装
+### 1.3  VS Code中的拓展插件安装
 
 安装好VS Code后，在左侧的“拓展”菜单（Ctrl+Shift+X）中搜索如下几个拓展包：
 
@@ -101,7 +101,7 @@
 > 这里建议修改默认字体的大小，打开左下角设置，在搜索设置中搜索 Font Size，主要需要修改的是两项，如下：
 > ![image-20210128151754917](Python%E5%85%A5%E9%97%A8.assets/image-20210128151754917.png)![image-20210128151820191](Python%E5%85%A5%E9%97%A8.assets/image-20210128151820191.png)
 
-### 1.4 Python环境搭建及项目创建
+### 1.4  Python环境搭建及项目创建
 
 ​	以下部分内容来自于[这里](https://blog.csdn.net/weixin_40528417/article/details/81141567?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-14.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-14.control)，如果有描述不清楚的内容建议查看。
 
@@ -219,7 +219,7 @@
 
 ​	请记住，**Python文件是 .py 结尾的**。
 
-### 2.0 Python认识什么字
+### 2.0  Python认识什么字
 
 ​	所有用Python处理的东西，都是用数字或字符表示的。通常称它们为**变量**（这里不展开讲变量储存的原理，暂时没有了解的必要），Python的变量一共有五种类型：数字（number）、字符串（string）、列表（list）、元组（tuple）、字典（dictionary）。这里先介绍最常用的数字和字符串，后续的部分遇到了再展开说明。
 
@@ -260,7 +260,7 @@ print(c)
 
 
 
-### 2.1 熟悉的“Hello World!”——print命令
+### 2.1  熟悉的“Hello World!”——print命令
 
 代码举例：
 
@@ -289,7 +289,7 @@ print("Good","\t","to","\t","see","\t","you.")	#\t 表示间隔一个制表位�
 print("Good","\n","to","\n","see","\n","you.")	#\n 表示换行输出
 ```
 
-### 2.2 比较和判断——布尔表达式/与或非
+### 2.2  比较和判断——布尔表达式/与或非
 
 ​	先说布尔表达式。**布尔表达式的结果是 true 或者 false.** 举例如下：
 
@@ -362,13 +362,13 @@ y = (x == 3) or (x == 5) or (x == 8) or (x == 9)
 #可以看到，用从属运算可以使得其他表达变得简单
 
 #再举一个例子
-a = s in 'science'		#意思是，s在不在字符串science中存在呢？如果在，那么a的值就是true
+a = 's' in 'science'		#意思是，s在不在字符串science中存在呢？如果在，那么a的值就是true
 print(a)
 
 #not in 这个表达与 in 的意思刚好相反，表示某个元素在指定序列中吗，如果不在，返回true
 ```
 
-### 2.3 if/else结构
+### 2.3  if/else结构
 
 ​	这是代码中最常见的一种结构，如果……就执行A命令，否则执行B命令，具体的格式如下：
 
@@ -404,7 +404,147 @@ else:
     print("你成绩是假的吧")
 ```
 
-### 2.4 
+### 2.4  循环结构
+
+#### 2.4.1  while循环——当型循环
+
+​	这类循环的含义是：当满足/不满足某个条件时，执行某个命令，是先进行判断，再执行命令的循环结构。它的一般结构如下：
+
+```python
+i = 1				#定义了一个计数器i，每一次循环，i的数值会变化，可以用来设定循环次数
+while i <= 10:		#当 i ≤ 10 的时候，都执行while内部的命令，注意，这里需要有冒号
+    print(i)
+    i += 1			#是一种简略写法，含义是 i = i + 1，即新的i比旧的i增加了1，类似的可以将"+"替换成加减乘除中的任意一种
+#注意缩进，同样的缩进都被认为是在同一个while循环中，不在循环中的命令不要缩进
+```
+
+```python
+#如果需要跳出循环，可以使用break命令，如下
+#假设我们需要计算多少的阶乘刚刚大于10000，此时我们不知道需要循环多少次，但是知道有一个条件“x的阶乘大于10000”，只要满足这个条件就不用再循环了
+x = 1		#设x是需要求的数字
+y = 1		#设y是x的阶乘
+j = 1		#设定一个计数器
+while j<100000:			#因为不知道要循环多少次，所以设定一个较大的数
+    y = y * (x + 1)
+    x += 1				#每次都使得x的值比上一次大1
+    j += 1
+    if y >= 10000: break		#使用break跳出循环
+print(x)
+
+#以上例子还可以用while直接判定，即只要阶乘的值大于10000即可，修改如下：
+x = 1		#设x是需要求的数字
+y = 1		#设y是x的阶乘
+while y <= 10000:		#判定条件是：只要y>10000，即结束循环
+    y = y * (x + 1)		
+    x += 1
+print(x)
+#计算结果是同样的
+```
+
+#### 2.4.2  for循环——直到型循环
+
+​	这类循环的含义是：一直执行某个命令，直到达到某个条件才结束循环，是先执行命令，再进行判定的循环结构，与当型循环刚好相反。在Python中，for循环用的更多，可读性更强。它的一般结构如下：
+
+```python
+for var in sequence:
+	Statements
+#var是一个变量，依次给它赋予序列sequence中的值，每次赋予值后都执行Statements中的命令。直到所有的sequence中的值都被赋予完了，停止循环。
+```
+
+​	这里需要注意的一点是，**对于for循环，var的值不建议在循环中改变**。因为var的值是被sequence中的赋值而改变的，从而实现了循环。如果一定要改变var的值，建议使用while循环。不过，var的值还是可以出现在循环内部（只是不建议改变它）。
+
+​	for循环的用法在Python中比较多，举例如下：
+
+```python
+for letter in "hello":
+    print(letter)
+#这个命令可以逐一输出hello中的字母，每一次只输出一个字母
+
+for i in [1,2,3,4,5]:
+    print(i)
+#这个命令可以逐一输出序列[1,2,3,4,5]中的数字
+```
+
+​	每次都定义一个序列非常麻烦，这里介绍一个经常配合for循环的函数：range函数
+
+```python
+range([初值,]终值[,步长])
+#[]里面的内容是可以省略的，如果不需要或者没有要求可以不用输入
+#所有的值都必须是整型！
+
+range(5)
+#省略了初值和步长，只有终值。如果省略，那么初值的默认值是0，步长的默认值是1
+for i in range(5):		#意思是i的取值从0-5，每次增加1
+    print(i)
+
+range(15,1,-2)
+#这是一个递减的序列
+#注意！步长的值不能等于0，否则会报错！
+```
+
+#### 2.4.3  有关循环的tips
+
+一、循环是可以嵌套的（也就是套娃结构，一个循环内部可以再套一个循环），不过嵌套变多之后程序结构会变得复杂难懂，通常嵌套最多是3-4层。
+
+二、有关循环的选择：
+- 已知迭代/循环次数  →  for循环
+- 未知迭代/循环次数  →  0次迭代/循环或更多  →  前测试循环结构
+- 未知迭代/循环次数  →  1次迭代/循环或更多  →  后测试循环结构
+
+> 前测试循环：即先进行判断，再根据判断结构选择执行或不执行命令
+> 后测试循环：即先执行命令，再根据执行后的结果进行判断
+
+三、跳出循环：通常有两种方式，1）使用 if 和 break 命令；2）使用flag进行判定
+
+1. if 和 break 命令在上方已经已经有过举例了，这里给出一个更加“程序员风格”的例子：
+
+   ```python
+   #找到字符串中的某个字符即跳出循环，并输出找到的结果
+   string1 = "I have a dream"		#定义一个字符串变量string1
+   letter = input("输入一个需要寻找的字母：")		#input()函数，会将键盘输入的字符作为输入，把它赋值给letter这个变量
+   
+   found = False		#定义一个二元变量found，它只有True或者False中的一个值，这里使它的默认值为False（注意，False和True需要大写首字母）
+   for a in string1:
+       if a == letter:
+           found = True	#如果找到了这个字母，found的值改变为True
+           break			#同时跳出循环
+   
+   if found == True:		#如果found的值为True，则执行下面的命令
+       print("Letter", letter, "has been found!")
+   ```
+
+   事实上，如果能用好二元变量，程序会变得高效，同时也使得程序可读性上升。下面介绍的 flag 就是很好的二元变量的利用。
+
+2. 使用 flag 进行判定：flag 只有两种状态，倒下或者立起来（传说中的立个flag出处就在这里），跟二元变量只有True和False两种值的情况相符合，因此常用来进行判断（实际上在上个例子中的变量 found 就是一个 flag）
+
+   ```python
+   string1 = "I have a dream"
+   letter = input("输入一个需要寻找的字母：")
+   
+   found = False		#这里found作为一个flag，定义它现在的状态（初态）为False
+   #使用while循环
+   i = 0		#定义计数器i
+   while i <= len(string1) - 1 and found == False :
+   # ↑ 这一句稍微有点复杂。首先对于i，需要满足i的大小要比字符串长度短，因此使用len()函数：len()函数可以获得字符串的长度，并把长度转换为整型输出；其次，要让循环继续，则还需要使得found这个flag保持False状态，否则就不进入循环（相当于停止循环）。同时满足这两个条件才进入循环寻找字母是否出现，因此中间用逻辑关系 and 连接。
+       if string1[i] == letter:		#string1[i]是一个列表变量，把string1所代表的那一堆字符转化成了一个列表，或者说排列好的集合，集合的元素就是“I have a dream”这些字母（而不是单词）
+           found = True				#这里因为找到了，所以改变flag状态
+   	i += 1							#计数器+1
+   
+   if found == True:
+       print("Letter", letter, "has been found!")
+   ```
+
+#### 2.4.4  练习和举例
+
+1. 编写一个程序，提示用户输入10个人的体重，然后找到最重的人。如果用户输入非数字、负数、零以及大于300以上的值时，告诉用户输入有误重新输入。
+
+   ```python
+   
+   ```
+
+2. 
+
+
 
 ## 附录
 
@@ -432,7 +572,8 @@ print(a,b)
 ​	此时，我们通过引入中间变量，就能够解决以上问题。
 
 ```python
-a = 1, b = 2
+a = 1
+b = 2
 temp = a
 a = b
 b = temp
@@ -445,4 +586,28 @@ print(a,b)
 
 #### A2.2  冒泡排序
 
-​	有一列数字
+[参考文档](https://blog.csdn.net/weixin_43790276/article/details/104033622)
+
+​	有一列随机排列大小的数字，需要按照从小到大/从大到小的顺序重新排列，最原始的方法就是冒泡排序。排序过程中，最大/最小的值会逐渐通过交换“浮”到元素列表的“顶端”。就像“冒泡”一样，所以被称为冒泡排序。详细的原理及步骤在上方参考文档中，不再展开描述。
+
+​	算法实现代码：
+
+```python
+#此处定义了一个新的函数function
+def bubble_sort(array):
+    for i in range(1, len(array)):
+        for j in range(0, len(array)-i):
+            if array[j] > array[j+1]:
+                array[j], array[j+1] = array[j+1], array[j]
+    return array
+
+if __name__ == '__main__':
+    array = [10, 17, 50, 7, 30, 24, 27, 45, 15, 5, 36, 21]
+    print(bubble_sort(array))
+```
+
+排序简要介绍资料：
+
+- 视频（来源：B站）：[用10秒，度过30秒时间](https://www.bilibili.com/video/BV1zD4y197Qi)
+- 文档（来源：CSDN）：[用Python实现常见排序算法](https://blog.csdn.net/sensev/article/details/80908776?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control)
+
