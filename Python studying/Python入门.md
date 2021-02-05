@@ -1,4 +1,4 @@
-# 
+# Python与编程基础
 
 ## 0.说明
 
@@ -69,7 +69,7 @@
 
 ![image-20210122234132362](Python入门.assets/image-20210122234132362.png)
 
-如果用上面的开发环境，可能会劝退大多数人，所以接下来我们需要一个很屌的开发环境，或者说一个集成了写代码、运行调试代码的平台——Visual Studio Code.
+​	如果用上面的开发环境，可能会劝退大多数人，所以接下来我们需要一个很屌的开发环境，或者说一个集成了写代码、运行调试代码的平台——Visual Studio Code.
 
 #### 1.2.X  Visual Studio Code
 
@@ -544,14 +544,173 @@ range(15,1,-2)
 
 2. 
 
+## 3.列表
 
+​	列表（list）是 Python 中用途非常广泛的变量类型。在其他编程语言中，会用数组、矩阵等来描述它。它们在本质上是一样的，拥有一个变量名，但可以包含不止一条信息。Python 中的列表可以是一维的，也可以是二维、三维或更高维的（理论上来讲可以到无限维，但在实际应用中，很少出现超过五维的列表）。对于列表的概念可以类比线性代数中的相关概念：一维列表  →  向量/一维数组；二维列表  →  矩阵；更高维的列表  →  高维空间……
+
+​	Python 中的列表是有索引位置的，也称索引，是个数字标识。一个列表中的所有元素都有唯一的索引。
+
+​	**请记住：Python 中的索引编号是从0开始的！**就是说，第一个元素索引编号是0，最后一个元素的索引编号比总元素数量少1.
+
+​	下面是建立一个一维列表的代码：
+
+```python
+#共有三种方式创建一个列表，并添加元素进去
+#1
+list_name = [None] * size
+list_name[index] = value
+#list_name是列表的变量名，可以随便起；size是这个列表的大小，即这个列表包含了几个元素，它是个整型值
+#第二行中方括号内是索引编号，它可以是值，也可以是表达式；等号后是相应索引编号所代表的值
+#注意！索引编号不能超过列表大小！否则会报错！
+
+#2
+list_name = [value0, value1, value2, ..., value N]
+#这样是在建立列表的同时给它赋值，只能按顺序添加值
+
+#3
+list_name = []
+list_name.append(value0)
+list_name.append(value1)
+#首先建立一个空的列表，然后用append命令给元素赋值
+```
+
+​	接下来我们用实际的代码分别用三种方式建立相同内容的列表，并用 print 命令输出。
+
+```python
+#1
+A = [None]*4		#是个包含四个元素的列表
+i = 0
+A[i] = "Good"
+A[i+1] = "To"
+A[i+2] = "See"
+A[i+3] = "You"
+print(A)			#输出显示列表A包含的全部元素
+print(A[2])			#输出显示列表A的第3个元素（索引是从0开始的）
+
+#2
+B = ['Good','To','See','You']
+print(B)
+print(B[2])
+
+#3
+C = []
+C.append('Good')
+C.append('To')
+C.append('See')
+C.append('You')
+print(C)
+print(C[2])
+```
+
+### 3.1  关于列表的各种操作
+
+#### 3.1.1  花式获取列表值
+
+​	切片操作：在列表/序列中获取某一范围内元素的操作。
+
+```python
+List_A = [2,3,5,7,11,13]
+print(List_A[1:3])		#[1:3]表示 从索引编号1的元素开始，到第3个元素为止
+print(List_A[0:6:3])	#[0:6:3]表示 从索引编号0的元素开始，以步长3的间距，到第6个元素为止
+print(List_A[::2])		#甚至可以把前面两个省略，直接按照步长2的间距输出
+print(List_A[::-1])		#步长是负值可以倒序输出
+```
+
+#### 3.1.2  使用循环遍历一维列表
+
+​	为了简化代码，通常会用for循环（while循环也是可以的）遍历（也就是从头到尾走一遍）列表。常见的方式如下：
+
+```python
+#1
+for index in range(size):
+    process list_name[index]
+#index是索引编号，range()函数确定了范围，size是这个列表的大小
+#process是对于这个列表中一个元素的操作
+
+#2	有时候这种方法无法使用
+for var in list_name:
+    process var
+#直接看例子好了，不是很好解释
+```
+
+​	所以用这两种方法分别遍历一次一维列表，代码如下：
+
+```python
+#1
+List_A = [2,3,5,7,11,13]
+for i in range(6):
+    print(List_A[i])
+for i in range(6):
+	List_A[i] = List_A[i]*2		#将所有元素的值翻倍
+print(List_A)
+
+#2
+List_A = [1,2,3,5,7,11,13]
+for element in List_A:
+    print(element,"\t")			#element 相当于是个变量名
+```
+
+#### 3.1.3  二维列表
+
+​	二维的列表可以理解为：列表的列表。所以创建二维列表可以理解为先创建一个列表，其中的元素又都是列表。如果用行和列来定义二维列表的话，通常都是先建立行，再建立列。建立二维列表有4种方式：
+
+```python
+#以下举例均为3行4列的列表
+#1
+list_a = [None]*3
+list_a[0] = ['Good','To','See','You']
+list_a[1] = [1,2,3,4]
+list_a[2] = [3*2,1+3,6-9,8/4]
+print(list_a)
+
+#2 利用append命令添加
+list_a = []
+list_a.append(['Good','To','See','You'])
+list_a.append([1,2,3,4])
+list_a.append([3*2,1+3,6-9,8/4])
+print(list_a)
+
+#3 直接添加
+list_a = [
+    ['Good','To','See','You'],\
+    [1,2,3,4],\
+    [3*2,1+3,6-9,8/4]\
+]
+print(list_a)
+#第三种方法中的反斜杠没有实际的意义，仅作为一个长代码分行输入的标志
+
+#4 这种方法看起来更像数组/矩阵的建立方式，使用for循环
+list_a = [ [None]*4 for i in range(3)]		#注意：前面的4表示每行有4个元素（四列），后面的3表示3行
+list_a[0][0] = 'Good'
+list_a[0][1] = 'To'
+list_a[0][2] = 'See'
+list_a[0][3] = 'You'
+list_a[1][0] = 1
+list_a[1][1] = 2
+list_a[1][2] = 3
+list_a[1][3] = 4
+list_a[2][0] = 3*2
+list_a[2][1] = 1+3
+list_a[2][2] = 6-9
+list_a[2][3] = 8/4
+print(list_a)
+```
+
+​	在建立了二维列表之后，就可以对列表进行选择性访问了。
 
 ## 附录
 
 ### A1  常用的函数和命令
 
-```
+#### A1.1  键入并获取键入值命令——input()命令
 
+​	这个命令用于让用户输入一个值，并把它记录下来，通常会被嵌套在其他函数中
+
+```python
+input()
+input("Please input a number")		#在读取输入值的同时输出引号内部的内容
+int(input())						#将输入值转化为整型
+x = int(input("Please input a number"))		#常见的让用户输入一个值，并把它转化为整型，赋值给变量x
 ```
 
 ### A2  常用的算法举例
@@ -584,6 +743,15 @@ print(a,b)
 
 ​	题外话：某些软件的安装目录中会存在temp这个文件夹，其实也是有类似的思想在这里，temp本意是临时雇员，引申在此表示临时的文件，在编程中常用temp作为中间变量的变量名。
 
+​	然而在Python中还有更简单的交换方式，代码如下：
+
+```python
+a = 1
+b = 2
+a,b = b,a
+print(a,b)
+```
+
 #### A2.2  冒泡排序
 
 [参考文档](https://blog.csdn.net/weixin_43790276/article/details/104033622)
@@ -611,3 +779,6 @@ if __name__ == '__main__':
 - 视频（来源：B站）：[用10秒，度过30秒时间](https://www.bilibili.com/video/BV1zD4y197Qi)
 - 文档（来源：CSDN）：[用Python实现常见排序算法](https://blog.csdn.net/sensev/article/details/80908776?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control)
 
+### A3  部分参考资料
+
+[Python中有意思的25个代码操作](https://blog.csdn.net/weixin_42232219/article/details/113532769#comments_14910348)
