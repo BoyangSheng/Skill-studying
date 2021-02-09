@@ -1,4 +1,4 @@
-# Python与编程基础
+# Python入门
 
 ## 0.说明
 
@@ -538,11 +538,6 @@ range(15,1,-2)
 
 1. 编写一个程序，提示用户输入10个人的体重，然后找到最重的人。如果用户输入非数字、负数、零以及大于300以上的值时，告诉用户输入有误重新输入。
 
-   ```python
-   
-   ```
-
-2. 
 
 ## 3.列表
 
@@ -696,7 +691,197 @@ list_a[2][3] = 8/4
 print(list_a)
 ```
 
-​	在建立了二维列表之后，就可以对列表进行选择性访问了。
+​	在建立了二维列表之后，就可以对列表进行选择性访问了。下面的例子是获取、修改遍历二维列表的值。
+
+```python
+#首先建立一个二维列表
+list_a = [
+    ['Good','To','See','You'],\
+    [1,2,3,4],\
+    [3*2,1+3,6-9,8/4]\
+]
+
+#获取值
+print(list_a[2][3])		#类似这种方式就可以选择访问了，先行再列的顺序
+list_a[2][3] = 0.045
+print(list_a[2][3])		#这两个操作就可以更改相应的列表元素的值了
+						#跟上面建立二维列表的第四种方法是一样的
+    
+#遍历二维列表（需要for循环）
+list_b = [ [None]*4 for i in range(3)]		#建立一个新的空列表
+x = 1
+for i in range(3):
+    for j in range(4):
+        list_b[i][j] = x
+        x += 1
+print(list_b)
+#双重for循环就可以完全走完整个列表。以上这个例子是将1~12按顺序添加进3*4的列表中
+for i in range(3):
+    for j in range(4):
+        list_b[i][j] *= 2
+print(list_b)
+#这个例子就是将上面建立的列表中所有的值翻倍
+```
+
+​	注意，遍历列表的时候有顺序，是先行再列，还是先列再行。我们将上面例子中的 list_b 用两种方式遍历一遍，通过代码中的微小区别来区分二者。
+
+```python
+#第一种方法
+for i in range(3):
+    for j in range(4):
+        print(list_b[i][j])
+for j in range(4):
+    for i in range(3):
+        print(list_b[i][j])
+
+#第二种方法
+for i in range(3):
+    for j in range(4):
+        print(list_b[i][j])
+for i in range(4):
+    for j in range(3):
+        print(list_b[j][i])
+```
+
+### 3.2  列表使用技巧&窍门
+
+#### 3.2.1  单独对行/列操作
+
+​	Python 中有针对行的简化操作，但没有针对列的简化操作，因此以下将用“对每一行/列分别求和”的例子说明单独对行/列的操作。
+
+```python
+#单独对行的操作有2种，这里用一个例子来描述2种操作方式：有4名学生，每名学生有5科成绩。一个学生的成绩用一行表示，最后输出他的平均成绩。
+#先建立学生成绩的列表，这里使用random函数在60~100内生成随机成绩
+import random
+subject = 5
+student = 4
+grade = [ [None]*subject for i in range(student)]
+
+for i in range(student):
+    for j in range(subject):
+        grade[i][j] = random.randint(60,100)
+
+#1 建立一个辅助的列表average
+average = [None]*student
+for i in range(student):
+    average[i] = 0					#每次循环都将这一次的average置零
+    for j in range(subject):
+        average[i] += grade[i][j]	#此时average是成绩总和
+    average[i] /= subject			#此时average是平均成绩
+print(average)
+
+del(average)
+#2 使用Python自带的方法遍历
+import math			#需要载入math包
+average = []
+for row in grade:
+    average.append(math.fsum(row)/subject)	#相当于往average列表中添加元素，添加的元素是：用math包中的fsum()命令对row中的元素求和，再除以subject求得的平均值
+print(average)
+```
+
+​	从以上这个例子可以看出，遍历整个列表更多的是灵活运用 for 循环。下面用 for 循环建立一个三维的列表：
+
+```python
+a = [ [[None]*4 for i in range(3)] for j in range(2)]
+x = 1
+print(a)
+for i in range(2):
+    for j in range(3):
+        for k in range(4):
+            a[i][j][k] = x
+            x += 1
+print(a)
+```
+
+#### 3.2.2  有用的列表函数
+
+```python
+#首先建立一个二维列表，之后的例子都以这个列表展开
+A = [ [None]*4 for i in range(3)]
+x = 1
+for i in range(3):
+    for j in range(4):
+        A[i][j] = x
+        x += 1
+
+Q1 = len(A)			#检索元素的总数目
+Q2 = max(A)			#返回列表中的最大值，相应的还有 min()
+Q3 = A.sort()		#将列表重新升序排列
+#对A.sort([reverse = True])这个命令，将True改成False可以降序排列，方括号中的内容不是必要的，省略则默认升序排列
+Q4 = sorted(A)		#将列表重新升序排列，保留原来列表，排序后生成新的列表
+#对sorted(A,[reverse = True])这个命令，同样可以将True改成False，效果同上
+```
+
+#### 3.2.3 列表的奇怪操作
+
+```python
+#合并列表
+list_a = [1,2,3,4,5]
+list_b = [6,7,8,9,0]
+list_all = list_a + list_b
+print(list_all)
+```
+
+### 3.3  列表练习
+
+1. 随机生成20个在11~100的整数，显示最大的三个数字和最小的三个数字。
+2. 随机生成一个20×20的列表，并随机填充11~100的整数。输入一个11 \~ 100的数字，如果在每一行中至少出现一次，则输出一个提示信息。
+3. 假设气温低于2℃，降雪的可能性就非常大。创建一个Python程序，输入10个城市名和它们在一月份的31天中每天中午12点的气温，输出哪些城市在哪一天降雪的可能性非常大。
+4. 编写一个程序，**使用列表**，提示用户输入10个人的体重，然后找到最重的人。如果用户输入非数字、负数、零以及大于300以上的值时，告诉用户输入有误重新输入。
+
+## 4.子程序、调用程序
+
+​	子程序在Python中应用非常广泛，它将一个大的程序进行功能的划分，每个子程序只需要完成一个相对简单的功能，通过主程序的调用完成复杂的功能。对于一个需要重复操作的步骤，将它作为一个子程序，可以大大减少代码量。对于大型的程序，使用子程序可以很方便的debug（查找漏洞）和修复。
+
+### 4.1  子程序的一般结构及调用
+
+​	Python 有自己内部的一些函数，如之前提到过的 min( ) 函数等，都是 Python 内部的函数，集成在了 Python 的安装之内了。不过 Python 也为开发者提供了开发的接口，即自定义的子程序，它的格式如下：
+
+```python
+def name([arg1, arg2,...]):
+    A Statement Or Block Of Statements.
+    
+    return value1 [, value2, value3...]
+#方括号中的内容是可选的，可以有也可以没有，根据需要自行选择
+```
+
+​	其中，name 是自定义的函数名，给它命名的规则与给变量命名的规则相同； arg1，arg2 ... 是传入这个函数的变量（数值或者列表等），它的数量根据需要增减；value1，value2 ... 是这个函数最终传出的值，**至少有一个传出的值**。
+
+​	通过以上步骤就可以建立一个函数，调用函数的方式也很简单，直接举例：
+
+```python
+def factorial(x):				#这一步定义子函数factorial()，括号中的内容是传入变量
+    y = int(x)					#保险起见这一步增加了int()取整函数
+    j = 1
+    for i in range(y):
+        z = (i+1)*j				#由于range()函数的范围是从0开始的，因此我们需要给i加1，使得i的初值不是0
+        j = z
+    return z					#最终返回的值是z，返回的值刷新了输入的x
+
+x = int(input('请输入一个数字，以计算其阶乘'))
+print("它的阶乘是：",factorial(x))			#在这一步中直接调用子函数factorial(x)
+```
+
+​	值得注意的是，return 语句相当于调用函数返回的值。在上面的例子中，返回的值是子程序 z 所代表的值，将这个值返回给了 factorial(x) ，即只要后面提及 factorial(x) ，出现的值就是 z 所代表的值（前提是传递进去的 x 不改变）。
+
+### 4.2  有关子程序的一些说明
+
+#### 4.2.1  形参和实参
+
+​	在一个子程序内部的参数被称为形参，调用函数时使用的参数被称为实参。举个例子：
+
+```python
+def add(n1, n2, n3):		#函数内部使用n1,n2,n3作为参数，它们是形参（走个形式）
+    result = n1 + n2 + n3
+    return result			#函数最终的值是result这个变量所代表的值
+
+a = 1; b = 2; c = 3
+total = add(a, b, c)		#调用add函数时使用了a,b,c作为参数，它们是实参
+print(total)
+#可以理解为，形参只是按照形式把实参的值传入子程序
+```
+
+​	
 
 ## 附录
 
@@ -712,6 +897,27 @@ input("Please input a number")		#在读取输入值的同时输出引号内部�
 int(input())						#将输入值转化为整型
 x = int(input("Please input a number"))		#常见的让用户输入一个值，并把它转化为整型，赋值给变量x
 ```
+
+#### A1.2  随机相关的操作——random()命令
+
+​	生成（伪）随机数、在一定范围内生成（伪）随机数、获取随机元素等，都可以用 random() 命令实现。
+
+```python
+import random		#需要用import加载random
+x1 = random.random()		#生成0~1之间的随机数
+print(x1)
+
+x2 = random.uniform(2,8)	#生成范围内的随机数，左边下限，右边上限
+x3 = random.randint(2,8)	#生成范围内的随机整数，左边下限，右边上限
+x4 = random.randrang(2,8,3)	#生成范围内的随机整数，最后一个数字代表随机数分布的步长
+x5 = random.choice('Good to see you')		#随机选取序列中的一个元素
+
+num = [1,2,3,4,5,6]
+x6 = random.shuffle(num)	#随机打乱列表中的顺序
+x7 = random.sample(num,3)	#在列表中随机选取3个元素组成新的列表，顺序不变
+```
+
+
 
 ### A2  常用的算法举例
 
@@ -781,4 +987,4 @@ if __name__ == '__main__':
 
 ### A3  部分参考资料
 
-[Python中有意思的25个代码操作](https://blog.csdn.net/weixin_42232219/article/details/113532769#comments_14910348)
+](https://blog.csdn.net/weixin_42232219/article/details/113532769#comments_14910348)
